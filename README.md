@@ -25,7 +25,9 @@ For example:
 
         config.password_length = 4..128
 
-3. Read about required [test helpers](https://github.com/plataformatec/devise#test-helpers).
+3. Review `devise.em.yml` (or locale file of your choice) for configurable messaging.
+
+4. Read about required [test helpers](https://github.com/plataformatec/devise#test-helpers).
 
 ## Getting Started with this codebase
 

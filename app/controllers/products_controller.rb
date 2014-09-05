@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_product, only: [:edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -10,11 +12,12 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.find(params[:id])
   end
 
   # GET /products/new
   def new
-    @product = Product.new
+    @product = current_user.products.new
   end
 
   # GET /products/1/edit
@@ -24,7 +27,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
 
     respond_to do |format|
       if @product.save
@@ -64,7 +67,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = current_user.products.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

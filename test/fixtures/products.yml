@@ -7,7 +7,7 @@ one:
   price_cents: 1
   active: false
   available_on: 2014-09-05
-
+  user: one
 two:
   sku: MyString
   name: MyString
@@ -15,3 +15,4 @@ two:
   price_cents: 1
   active: false
   available_on: 2014-09-05
+  user: two
